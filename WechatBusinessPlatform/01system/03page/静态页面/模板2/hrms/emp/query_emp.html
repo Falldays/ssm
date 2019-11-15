@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>员工管理-员工查询</title>
+		<link rel="stylesheet" href="../res/bootstrap/css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="../res/bootstrap/css/bootstrap-theme.min.css" type="text/css" />
+		<script type="text/javascript" src="../res/bootstrap/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<ol class="breadcrumb">
+			<li>当前位置:员工查询</li>
+		</ol>
+		<div class="container-fluid" style="padding-left: 0px;">
+			<div class="well">
+				<form action="#" method="post">
+					<div class="form-group" style="width: 100%">
+						<div class="row">
+							<div class="col-sm-1">
+								<span>所属部门:</span>
+							</div>
+							<div class="col-sm-2">
+								<select name="depId" class="form-control">
+									<option>---不限---</option>
+									<option>财务部</option>
+									<option>人事部</option>
+									<option>行政部</option>
+									<option>技术部</option>
+									<option>后勤部</option>
+								</select>
+							</div>
+							<div class="col-sm-1">
+								<span>员工姓名:</span>
+							</div>
+							<div class="col-sm-2">
+								<input id="empName" class="form-control" type="text" name="empName" />
+							</div>
+							<div class="col-sm-1">
+								<span>员工编号:</span>
+							</div>
+							<div class="col-sm-2">
+								<input id="empNo" class="form-control" type="text" name="empNo" />
+							</div>
+							<div>
+								<button type="button" class="btn btn-primary"><span>查询员工</span></button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="scrollContent" style="width: 99%">
+			<table class="table table-hover table-striped table-bordered">
+				<thead>
+					<tr class="info">
+						<th class="text-center">
+							<span>员工姓名</span>
+						</th>
+						<th class="text-center">
+							<span>员工编号</span>
+						</th>
+						<th class="text-center">
+							<span>性别</span>
+						</th>
+						<th class="text-center">
+							<span>手机号码</span>
+						</th>
+						<th class="text-center">
+							<span>所属部门</span>
+						</th>
+						<th class="text-center">
+							<span>职位</span>
+						</th>
+						<th class="text-center">
+							<span>操作</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>张丰</td>
+						<td>R01001</td>
+						<td>男</td>
+						<td>15945698713</td>
+						<td>人事部</td>
+						<td>人事部经理</td>
+						<td>
+							<a href="emp_info.html">详情</a>
+							<a>删除</a>
+							<a href="update_emp.html">修改</a>
+						</td>
+					</tr>
+					<tr>
+						<td>李倩倩</td>
+						<td>C01002</td>
+						<td>女</td>
+						<td>15447698713</td>
+						<td>财务部</td>
+						<td>会计专员</td>
+						<td>
+							<a href="emp_info.html">详情</a>
+							<a>删除</a>
+							<a href="update_emp.html">修改</a>
+						</td>
+					</tr>
+					<tr>
+						<td>刘为刚</td>
+						<td>H01001</td>
+						<td>男</td>
+						<td>13845698566</td>
+						<td>后勤部</td>
+						<td>保安</td>
+						<td>
+							<a href="emp_info.html">详情</a>
+							<a>删除</a>
+							<a href="update_emp.html">修改</a>
+						</td>
+					</tr>
+					<tr>
+						<td>马小波</td>
+						<td>D01001</td>
+						<td>男</td>
+						<td>15645698881</td>
+						<td>人事部</td>
+						<td>招聘主管</td>
+						<td>
+							<a href="emp_info.html">详情</a>
+							<a>删除</a>
+							<a href="update_emp.html">修改</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</body>
+
+</html>

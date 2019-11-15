@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <!-- 配置扫描包-->
+    <context:component-scan base-package="com.qst.ssm.controller">
+        <!--扫描使用@Controller注解的类-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--
+     开启注解模式驱动：
+		默认注册一个RequestMappingHandlerMapping,一个RequestMappingHandlerAdapter,一个ExceptionHandlerExceptionResolver.
+		以支持对使用了 @RequestMapping 、 @ExceptionHandler 及其他注解的控制器方法的请求处理
+		conversion-service="conversionService"配置"数据类型转换服务工程",即将请求参数文本值转换成需要的java类型
+  -->
+    <mvc:annotation-driven conversion-service="conversionService">
+
+        <!--
+        suffix-pattern="false"控制器请求URL禁止使用后缀.如:/dep/add表示正确请求URL,/dep/add.do表示错误请求URL
+        trailing-slash="false"禁止URL以斜杠'/'结尾. 如:/dep/add表示正确请求URL;/dep/add/表示错误的请求URL
+         -->
+        <mvc:path-matching suffix-pattern="false" trailing-slash="false"/>
+        <!-- 消息转换器 当使用控制器方法使用@ResponseBody注解时,将方法的返回值作为响应体内容返回给客户端
+          将这些返回类型以什么样的内容格式(即response的content-type类型,同时还要考虑到客户端是否接受这个类型）存进response的body中返回给客户端是一个问题，对于这个过程的处理都是靠许许多多的HttpMessageConverter转换器来完成的
+          -->
+        <mvc:message-converters>
+            <ref bean="stringHttpMessageConverter"/>
+            <ref bean="fastJsonHttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!-- 过滤掉静态资源文件,将静态资源文件求交给默认Servlet处理,而是不是由控制器方法处理
+      注:不加该配置,访问不到*.html、*.js、*.css等静态资源文件,页面报404错误
+      -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 文件上传配置 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设定默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 设定文件上传的最大值为5MB，5*1024*1024 -->
+        <property name="maxUploadSize" value="5242880"/>
+        <!-- 设定文件上传时写入内存的最大值，如果小于这个参数不会生成临时文件，默认为10240 -->
+        <property name="maxInMemorySize" value="40960"/>
+        <!-- &lt;!&ndash; 上传文件的临时路径 &ndash;&gt;
+         <property name="uploadTempDir" value="WEB-INF/fileUpload"></property>-->
+        <!-- 延迟文件解析 -->
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <!--登录检查拦截器-->
+        <mvc:interceptor>
+            <!--被拦截的URL,通常是通配形式 -->
+            <mvc:mapping path="/emp/*"/>
+            <!--排除被拦截的URL,通常是具体的URL -->
+            <mvc:exclude-mapping path="/dep/*"/>
+
+            <bean class="com.qst.ssm.controller.support.interceptor.LoginCheckHandlerInterceptor">
+                <property name="loginPageURL">
+                    <value>/login.jsp</value>
+                </property>
+                <property name="ajaxAsynchURLs">
+                    <ref bean="ajaxAsynchURLs"/>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--视图解析器 -->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        &lt;!&ndash; 制定页面存放的路径 &ndash;&gt;
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        &lt;!&ndash; 文件的后缀 &ndash;&gt;
+        <property name="suffix" value=".jsp"/>
+    </bean>-->
+
+    <!--异常处理-->
+    <bean class="com.qst.ssm.controller.support.handler.CustomExceptionResolver">
+        <property name="errorPage">
+            <value>/WEB-INF/error.jsp</value>
+        </property>
+        <property name="ajaxAsynchURLs">
+            <ref bean="ajaxAsynchURLs"/>
+        </property>
+    </bean>
+
+    <!-- 配置所有AJAX请求路径-->
+    <bean name="ajaxAsynchURLs" class="java.util.ArrayList">
+        <constructor-arg index="0">
+            <list>
+                <value>/dep/detail</value>
+            </list>
+        </constructor-arg>
+    </bean>
+    <!-- 文本消息转换器.并设置向客户端输出的数据格式为:text/html;编码为:UTF-8-->
+    <bean id="stringHttpMessageConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <constructor-arg value="UTF-8" index="0"></constructor-arg>
+        <!--避免出现乱码 -->
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!--Spring的Converter可以将一种类型转换成另一种类型。-->
+        <!--在使用时，必须编写一个实现org.springframework.core.convert.converter.Converter接口的java类。-->
+        <property name="converters">
+            <set>
+                <bean class="com.qst.ssm.controller.support.converter.UtilDateConverter">
+                    <property name="dateFormat" value="yyyy-MM-dd"/>
+                </bean>
+                <bean class="com.qst.ssm.controller.support.converter.SqlDateConverter">
+                    <property name="dateFormat" value="yyyy-MM-dd"/>
+                </bean>
+                <bean class="com.qst.ssm.controller.support.converter.SqlTimeConverter">
+                    <property name="timeFormat" value="yyyy-MM-dd HH:mm:ss"/>
+                </bean>
+                <bean class="com.qst.ssm.controller.support.converter.SqlTimestampConverter">
+                    <property name="timeFormat" value="yyyy-MM-dd HH:mm:ss"/>
+                </bean>
+            </set>
+        </property>
+        <!--
+         Converter是一般工具，可以将一种类型转换成另一种类型。
+         例如，将String转换成Date，或者将Long转换成Date。Converter既可以用在web层，也可以用在其它层中。
+         Formatter只能将String转成成另一种java类型。
+         例如，将String转换成Date，但它不能将Long转换成Date。所以，Formatter适用于web层。
+         为此，在Spring MVC应用程序中，选择Formatter比选择Converter更合适。
+        -->
+    </bean>
+
+
+    <!-- JSON消息转换器:将控制器方法返回的对象转换成JSON格式的字符串,并设置向客户端输出的数据格式为:application/json;编码为:UTF-8-->
+    <bean id="fastJsonHttpMessageConverter"
+          class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+                <value>text/html;charset=UTF-8</value>
+                <!-- 避免IE出现下载JSON文件的情况 -->
+            </list>
+        </property>
+        <property name="fastJsonConfig">
+            <bean class="com.alibaba.fastjson.support.config.FastJsonConfig">
+                <property name="charset">
+                    <value>UTF-8</value>
+                </property>
+                <property name="dateFormat">
+                    <value>yyyy-MM-dd</value>
+                </property>
+                <property name="serializerFeatures">
+                    <list>
+                        <value>WriteNullStringAsEmpty</value>
+                        <value>WriteMapNullValue</value>
+                        <value>WriteNullBooleanAsFalse</value>
+                        <value>QuoteFieldNames</value>
+                        <value>WriteDateUseDateFormat</value>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>

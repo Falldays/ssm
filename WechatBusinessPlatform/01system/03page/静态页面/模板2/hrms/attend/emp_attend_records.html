@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>考勤管理-考勤查询</title>
+		<link rel="stylesheet" href="../res/My97DatePicker/skin/WdatePicker.css" />
+		<link rel="stylesheet" href="../res/bootstrap/css/bootstrap.min.css" type="text/css" />
+		<script type="text/javascript" src="../res/bootstrap/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../res/My97DatePicker/WdatePicker.js"></script>
+
+	</head>
+
+	<body>
+		<ol class="breadcrumb">
+			<li>当前位置:考勤查询</li>
+		</ol>
+		<div class="container-fluid" style="padding-left: 0px;">
+			<div class="well">
+				<form action="${path}/user/search" method="post">
+					<div class="form-group" style="width: 100%">
+						<div class="row">
+							<div class="col-sm-2 text-right">
+								<span>员工姓名(或编号):</span>
+							</div>
+							<div class="col-sm-2">
+								<input id="keyword" class="form-control" type="text" name="keyword" />
+							</div>
+							<div class="col-sm-1 text-right">
+								<span>月份:</span>
+							</div>
+							<div class="col-sm-2">
+								<input class="Wdate form-control" type="text" style="height: 32px" readonly="" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM'})" />
+							</div>
+							<div>
+								<button type="button" class="btn btn-primary"><span>查询当月考勤</span></button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="scrollContent" style="width: 99%">
+			<table class="table table-hover table-striped table-bordered">
+				<thead>
+					<tr class="info">
+						<th class="text-center">
+							<span>员工姓名</span>
+						</th>
+						<th class="text-center">
+							<span>所属部门</span>
+						</th>
+						<th class="text-center">
+							<span>打卡日期</span>
+						</th>
+						<th class="text-center">
+							<span>上班时间</span>
+						</th>
+						<th class="text-center">
+							<span>上班状态</span>
+						</th>
+						<th class="text-center">
+							<span>下班时间</span>
+						</th>
+						<th class="text-center">
+							<span>下班状态</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>李勇</td>
+						<td>开发部</td>
+						<td>2018-02-25</td>
+						<td>08:30</td>
+						<td>补卡</td>
+						<td>17:36</td>
+						<td>正常</td>
+					</tr>
+					<tr>
+						<td>刘维佳</td>
+						<td>开发部</td>
+						<td>2018-02-25</td>
+						<td>08:27</td>
+						<td>正常</td>
+						<td>17:32</td>
+						<td>正常</td>
+					</tr>
+					<tr>
+						<td>鲍骞</td>
+						<td>后勤部</td>
+						<td>2018-02-26</td>
+						<td>----</td>
+						<td>缺卡</td>
+						<td>17:02</td>
+						<td>早退</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</body>
+
+</html>

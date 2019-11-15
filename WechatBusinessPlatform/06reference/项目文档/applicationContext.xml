@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <!-- 配置阿里Druid数据源-->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="username">
+            <value>root</value>
+        </property>
+        <property name="password">
+            <value></value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://localhost:3306/qst?useUnicode=true&amp;characterEncoding=utf8</value>
+        </property>
+        <!-- 初始化连接数量-->
+        <property name="initialSize">
+            <value>10</value>
+        </property>
+        <!-- 最大连接数据库连接数,设 0 为没有限制-->
+        <property name="maxActive">
+            <value>50</value>
+        </property>
+        <!-- 最小空闲连接数量,设 0 为没有限制-->
+        <property name="minIdle">
+            <value>10</value>
+        </property>
+        <!--连接超时:获取连接最大等待时间,单位毫秒 -->
+        <property name="maxWait">
+            <value>10000</value>
+        </property>
+        <!-- 使用非公平锁-->
+        <property name="useUnfairLock">
+            <value>true</value>
+        </property>
+        <!--是否缓存PreparedStatement -->
+        <property name="poolPreparedStatements">
+            <value>true</value>
+        </property>
+        <!-- 缓存PreparedStatement最大数量-->
+        <property name="maxOpenPreparedStatements">
+            <value>100</value>
+        </property>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis">
+            <value>6000</value>
+        </property>
+        <!-- 申请连接的时候检测,如果空闲时间大于timeBetweenEvictionRunsMillis,执行validationQuery检测连接是否有效-->
+        <property name="testWhileIdle">
+            <value>true</value>
+        </property>
+        <!-- 配置插件-->
+        <property name="filters">
+            <value>stat,wall</value>
+        </property>
+    </bean>
+    <!--配置sqlSessionFactory -->
+    <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--依赖注入数据源 -->
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <!--&lt;!&ndash;配置SQL Mapper XML文件&ndash;&gt;
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:com/qst/sm/mapper/*.xml</value>
+            </list>
+        </property>-->
+        <!--配置使用别名注解实体类所在的包-->
+        <property name="typeAliasesPackage">
+            <value>com.qst.ssm.entity</value>
+        </property>
+    </bean>
+
+    <!-- 注册Mapper接口SQL映射器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- Mapper接口所在的包-->
+        <property name="basePackage">
+            <value>com.qst.ssm.mapper</value>
+        </property>
+        <property name="sqlSessionFactoryBeanName">
+            <value>sqlSessionFactory</value>
+        </property>
+    </bean>
+    <!-- 配置sqlSession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!--配置spring事务管理器-->
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+    </bean>
+    <!-- 启用注解方式事务管理-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--启用spring注解,配置dao、service扫描包 -->
+    <context:component-scan base-package="com.qst.ssm.dao"/>
+    <context:component-scan base-package="com.qst.ssm.service"/>
+</beans>

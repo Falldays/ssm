@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>请假管理-请假申请</title>
+		<link rel="stylesheet" href="../res/bootstrap/css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="../res/bootstrap/datetimepicker/css/bootstrap-datetimepicker.min.css" type="text/css" />
+		<link rel="stylesheet" href="../res/My97DatePicker/skin/WdatePicker.css" />
+		<script type="text/javascript" src="../res/bootstrap/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="../res/My97DatePicker/WdatePicker.js"></script>
+	</head>
+
+	<body>
+		<ol class="breadcrumb">
+			<li>当前位置:请假申请</li>
+		</ol>
+		<div id="alertMessage">
+		</div>
+		<div id="scrollContent" style="width: 99%">
+			<form action="${basePath}platform/add_log_company" method="post">
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">审批人</label>
+						<div class="col-sm-1">
+							<span>张小波</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">请假类型</label>
+						<div class="col-sm-3">
+							<select name="depId" class="form-control">
+								<option>请选择请假类型</option>
+								<option>事假</option>
+								<option>病假</option>
+								<option>丧假</option>
+								<option>婚假</option>
+								<option>产假</option>
+								<option>调休</option>
+								<option>其它</option>
+							</select>
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">开始时间</label>
+						<div class="col-sm-3">
+							<input class="Wdate form-control" style="height:32px" type="text" readonly="" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm'})" /> </div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">结束时间</label>
+						<div class="col-sm-3">
+							<input class="Wdate form-control" type="text" style="height:32px" readonly="" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm'})" /> </div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">时长</label>
+						<div class="col-sm-3">0天0分</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">备注</label>
+						<div class="col-sm-3">
+							<textarea class="form-control" rows="10"></textarea>
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="submit_button"><span>立刻申请</span></button>
+			</div>
+		</div>
+
+	</body>
+
+</html>

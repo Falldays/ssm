@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>部门管理-修改部门</title>
+		<link rel="stylesheet" href="../res/bootstrap/css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="../res/bootstrap/datetimepicker/css/bootstrap-datetimepicker.min.css" type="text/css" />
+		<link rel="stylesheet" href="../res/My97DatePicker/skin/WdatePicker.css" />
+		<script type="text/javascript" src="../res/bootstrap/js/jquery.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+		<script type="text/javascript" src="../res/bootstrap/datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="../res/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+
+	<body>
+		<ol class="breadcrumb">
+			<li>当前位置:修改员工</li>
+		</ol>
+		<div id="alertMessage">
+		</div>
+		<div id="scrollContent" style="width: 99%">
+			<form action="query_emp.html" method="post">
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">员工姓名</label>
+						<div class="col-sm-3">
+							<input id="empName" class="form-control" type="text" name="empName" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">员工编号</label>
+						<div class="col-sm-3">
+							<input id="empNo" class="form-control" type="text" name="empNo" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">所属部门</label>
+						<div class="col-sm-3">
+							<select name="depId" class="form-control">
+								<option>---选择部门---</option>
+								<option>财务部</option>
+								<option>人事部</option>
+								<option>行政部</option>
+								<option>技术部</option>
+								<option>后勤部</option>
+							</select>
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">岗位</label>
+						<div class="col-sm-3">
+							<select name="postId" class="form-control">
+								<option>---选择岗位---</option>
+								<option>项目经理</option>
+								<option>java软件工程师</option>
+								<option>技术经理</option>
+								<option>前端工程师</option>
+								<option>数据库管理员</option>
+							</select>
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">性别</label>
+						<div class="col-sm-3">
+							<label><input   type="radio"  name="sex" value="1"  checked="checked"/>男</label>&nbsp;&nbsp;
+							<label><input   type="radio"  name="sex" value="2"  />女</label>
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">手机号码</label>
+						<div class="col-sm-3">
+							<input id="mobile" class="form-control" type="text" name="mobile" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">电子邮件</label>
+						<div class="col-sm-3">
+							<input id="email" class="form-control" type="text" name="email" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">身份证号码</label>
+						<div class="col-sm-3">
+							<input id="idCard" class="form-control" type="text" name="idCard" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">出生日期</label>
+						<!--<div class="col-md-3 input-group date form_datetime">
+							<input class="form-control col-sm-2" name="birthday" size="10" type="text" value="" readonly>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+						</div>-->
+						<div class="col-sm-3">
+							<input id="birthday" class="Wdate form-control" style="height:32px" type="text" name="birthday" readonly="" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">岗位角色</label>
+						<div class="col-sm-3">
+							<select name="postRole" class="form-control">
+								<option>---选择岗位角色---</option>
+								<option>高层领导</option>
+								<option>部门经理</option>
+								<option>部门副经理</option>
+								<option>普通员工</option>
+							</select>
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">在职状态</label>
+						<div class="col-sm-3">
+							<select name="postRole" class="form-control">
+								<option>---选择在职状态---</option>
+								<option>已转正</option>
+								<option>试用期</option>
+								<option>已离职</option>
+								<option>实习期</option>
+							</select>
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">入职日期</label>
+						<div class="col-sm-3">
+							<input class="Wdate form-control" type="text" style="height:32px" readonly="" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">薪水</label>
+						<div class="col-sm-3">
+							<input id="salary" class="form-control" type="text" name="salary" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">籍贯</label>
+						<div class="col-sm-3">
+							<input id="homeplace" class="form-control" type="text" name="homeplace" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<label class="control-label col-md-2" style="text-align: right;">地址</label>
+						<div class="col-sm-6">
+							<input id="address" class="form-control" type="text" name="address" />
+						</div>
+						<div class="col-sm-1">
+							<span style="color:rgb(255,0,0)">*</span>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="submit_button" onclick="$('form').first().submit()"><span>修改员工</span></button>
+			</div>
+		</div>
+
+	</body>
+
+</html>
