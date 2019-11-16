@@ -137,7 +137,7 @@ create table j_two_classification
 (
    pd_two_id            bigint not null auto_increment comment '商品分类二级表ID',
    pd_two_no            varchar(13) comment '商品分类二级NO',
-   pd_two_name          vachar(30) comment '商品分类二级名字',
+   pd_two_name          varchar(30) comment '商品分类二级名字',
    cla_fid              bigint comment '商品分类ID',
    primary key (pd_two_id)
 );
