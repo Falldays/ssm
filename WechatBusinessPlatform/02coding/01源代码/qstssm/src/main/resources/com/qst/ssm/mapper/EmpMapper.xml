@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.ssm.mapper.EmpMapper">
+    <!-- 查询所有员工-->
+    <select id="queryEmp" resultType="emp">
+        <![CDATA[
+        select
+            emp_id as empId,
+            emp_no as empNo,
+            emp_name as empName,
+            mobile,
+            sex,
+            birthday,
+            salary,
+            dep_id as depId,
+            homeplace
+        from
+            t_emp
+        ]]>
+    </select>
+    <!-- 根据员工ID加载员工信息-->
+    <select id="getEmp"  resultType="emp" parameterType="int">
+        <![CDATA[
+        select
+            emp_id as empId,
+            emp_no as empNo,
+            emp_name as empName,
+            mobile,
+            sex,
+            birthday,
+            salary,
+            dep_id as depId,
+            homeplace
+        from
+            t_emp
+        where emp_id=#{emp_id}
+       ]]>
+    </select>
+    <!-- 添加员工-->
+    <insert id="insertEmp" parameterType="emp">
+      <![CDATA[
+        insert into t_emp (
+            emp_no,
+            emp_name,
+            sex,
+            birthday,
+            salary,
+            dep_id,
+            mobile,
+            homeplace
+        )
+        values
+        (
+            #{empNo},
+            #{empName},
+            #{sex},
+            #{birthday},
+            #{salary},
+            #{depId},
+            #{mobile},
+            #{homeplace}
+         )
+      ]]>
+    </insert>
+    <!-- 根据员工ID删除员工记录-->
+    <delete id="deleteEmp" parameterType="int">
+        <![CDATA[
+        delete from t_emp where emp_id=#{emp_id}
+      ]]>
+    </delete>
+    <!-- 根据员工ID修改员工信息-->
+    <update id="updateEmp" parameterType="emp">
+    <![CDATA[
+        update from t_emp
+        set     dep_id=#{depId},
+                mobile=#{mobile},
+                salary=#{salary}
+        where emp_id=#{empId}
+     ]]>
+    </update>
+</mapper>
