@@ -73,7 +73,7 @@
     <!-- 根据员工ID修改员工信息-->
     <update id="updateEmp" parameterType="emp">
     <![CDATA[
-        update from t_emp
+        update  t_emp
         set     dep_id=#{depId},
                 mobile=#{mobile},
                 salary=#{salary}

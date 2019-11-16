@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>登录页面</title>
+    <title>欢迎使用SSM</title>
 </head>
 <body>
-登录系统
+请参考案例:
+<a href="/emp/add_emp.jsp">添加员工</a>
+<a href="/emp/query">查询员工</a>
 </body>
 </html>
