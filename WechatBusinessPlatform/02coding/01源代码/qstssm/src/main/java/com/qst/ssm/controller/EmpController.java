@@ -77,7 +77,7 @@ public class EmpController {
     @RequestMapping("add")
     public String addEmp(Emp emp) {
         int rows = empService.insertEmp(emp);
-        return "redirect:/emp/add_emp_result.jsp?rows=" + rows;
+        return "redirect:/emp/info?rows=" + rows;
     }
 
     /**

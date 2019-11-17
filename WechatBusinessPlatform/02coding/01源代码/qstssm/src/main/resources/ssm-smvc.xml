@@ -13,10 +13,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     </context:component-scan>
     <mvc:annotation-driven conversion-service="conversionService">
 
-    <mvc:path-matching suffix-pattern="false" trailing-slash="false"/>
+        <mvc:path-matching suffix-pattern="false" trailing-slash="false"/>
         <mvc:message-converters>
             <ref bean="stringHttpMessageConverter"/>
+            <!-- 将对象转成JSON格式字符串-->
             <ref bean="fastJsonHttpMessageConverter"/>
+            <!-- 将对象转成XML格式字符串-->
+            <ref bean="jackson2XmlHttpMessageConverter"/>
         </mvc:message-converters>
     </mvc:annotation-driven>
     <mvc:default-servlet-handler/>
@@ -118,7 +121,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         <property name="supportedMediaTypes">
             <list>
                 <value>application/json;charset=UTF-8</value>
-                <value>text/html;charset=UTF-8</value>
+                <!-- <value>text/html;charset=UTF-8</value>-->
             </list>
         </property>
         <property name="fastJsonConfig">
@@ -139,6 +142,20 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
                     </list>
                 </property>
             </bean>
+        </property>
+    </bean>
+    <bean id="jackson2XmlHttpMessageConverter"
+          class="org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter">
+        <property name="defaultCharset">
+            <value>UTF-8</value>
+        </property>
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/xml;charset=UTF-8</value>
+            </list>
+        </property>
+        <property name="prettyPrint">
+            <value>true</value>
         </property>
     </bean>
 </beans>

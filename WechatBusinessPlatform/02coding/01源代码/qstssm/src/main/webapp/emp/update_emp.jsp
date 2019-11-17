@@ -68,7 +68,7 @@
         <li>员工编号:<input type="text" name="empNo" required></li>
         <li>员工姓名:<input type="text" name="empName" required></li>
         <li>员工性别:
-            <label><input type="radio" name="sex" value="1" required>男</label>
+            <label><input type="radio" name="sex" value="1"  ${1==emp.sex?"cheked":""}    required>男</label>
             <label><input type="radio" name="sex" value="2" required>女</label>
         </li>
         <li>手机号码:<input type="tel" name="mobile" required></li>

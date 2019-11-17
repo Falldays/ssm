@@ -18,13 +18,13 @@ public class EmpServiceImpl implements IEmpService {
     private IEmpDao empDao;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.NEVER)
     public List<Emp> queryEmp() {
         return empDao.queryEmp();
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.NEVER)
     public Emp getEmp(int empId) {
         return empDao.getEmp(empId);
     }
