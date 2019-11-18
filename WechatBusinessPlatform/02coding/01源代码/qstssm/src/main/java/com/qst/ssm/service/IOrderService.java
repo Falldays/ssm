@@ -9,7 +9,7 @@ public interface IOrderService {
 //查询订单信息
     List<Order> queryOrder();
 //根据订单ID删除订单
-    int deleteOrder(int ordeId);
+    int deleteOrder(int orderId);
     //修改订单
     int updateOrder(Order order);
 

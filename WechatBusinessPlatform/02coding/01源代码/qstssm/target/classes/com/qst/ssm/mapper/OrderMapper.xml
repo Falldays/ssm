@@ -23,7 +23,7 @@
         ]]>
     </delete>
 
-    <!-- 根据员工ID修改员工信息-->
+    <!-- 根据订单ID修改订单信息-->
     <update id="updateOrder" parameterType="order">
     <![CDATA[
         update  j_order

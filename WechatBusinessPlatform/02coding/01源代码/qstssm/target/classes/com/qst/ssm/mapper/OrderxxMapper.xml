@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.ssm.mapper.OrderxxMapper">
+    <!--根据订单状态查询订单详细信息 -->
+    <select id="queryOrderxx" resultType="orderxx" parameterType="int">
+    <![CDATA[
+    select
+         orderxx_id as orderxxId,
+         order_id   as orderId,
+         pd_id      as pdId,
+         pd_number  as pdNumber,
+         pd_price  as pdPrice
+    from
+        j_ordexx
+    where
+        order_status=#{ordeStatus}
+    group by
+        order_status
+    ]]>
+    </select>
+</mapper>

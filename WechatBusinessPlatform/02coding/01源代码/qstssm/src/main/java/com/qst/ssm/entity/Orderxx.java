@@ -23,18 +23,18 @@ public class Orderxx {
     /**
      *订单状态
      */
-    private Integer ordeStatus;
+    private Integer orderStatus;
     /**
      *商品价格
      */
     private Integer pdPrice;
 
-    public Orderxx(Integer orderxxId, Integer orderId, Integer pdId, Integer pdNumber, Integer ordeStatus, Integer pdPrice) {
+    public Orderxx(Integer orderxxId, Integer orderId, Integer pdId, Integer pdNumber, Integer orderStatus, Integer pdPrice) {
         this.orderxxId = orderxxId;
         this.orderId = orderId;
         this.pdId = pdId;
         this.pdNumber = pdNumber;
-        this.ordeStatus = ordeStatus;
+        this.orderStatus = orderStatus;
         this.pdPrice = pdPrice;
     }
 
@@ -54,8 +54,8 @@ public class Orderxx {
         return pdNumber;
     }
 
-    public Integer getOrdeStatus() {
-        return ordeStatus;
+    public Integer getOrderStatus() {
+        return orderStatus;
     }
 
     public Integer getPdPrice() {
@@ -78,8 +78,8 @@ public class Orderxx {
         this.pdNumber = pdNumber;
     }
 
-    public void setOrdeStatus(Integer ordeStatus) {
-        this.ordeStatus = ordeStatus;
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public void setPdPrice(Integer pdPrice) {
@@ -93,7 +93,7 @@ public class Orderxx {
                 ", orderId=" + orderId +
                 ", pdId=" + pdId +
                 ", pdNumber=" + pdNumber +
-                ", ordeStatus=" + ordeStatus +
+                ", orderStatus=" + orderStatus +
                 ", pdPrice=" + pdPrice +
                 '}';
     }
