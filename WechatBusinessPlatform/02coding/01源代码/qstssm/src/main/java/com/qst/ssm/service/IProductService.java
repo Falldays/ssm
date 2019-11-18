@@ -1,10 +1,10 @@
-package com.qst.ssm.mapper;
+package com.qst.ssm.service;
 
 import com.qst.ssm.entity.Product;
 
 import java.util.List;
 
-public interface ProductMapper {
+public interface IProductService {
     /**
      *查询商品类全部信息
      * @return list
