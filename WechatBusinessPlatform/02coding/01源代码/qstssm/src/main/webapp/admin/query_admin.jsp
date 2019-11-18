@@ -21,7 +21,7 @@
             <th>管理员姓名</th>
             <th>手机号码</th>
             <th>性别</th>
-            <th>操作1</th>
+            <th>操作</th>
         </tr>
         <c:choose>
             <c:when test="${ empty requestScope.adminList}">
