@@ -25,9 +25,13 @@
 </c:choose>
 <a href="/emp/query">返回查询页面</a>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <a href="/index.jsp">返回主页面</a>
 =======
 <a href="/index.html">返回主页面</a>
 >>>>>>> a56ee9dbbafb729a9c21bd3bce0c6f53556a079a
+=======
+<a href="/index.html">返回主页面</a>
+>>>>>>> bf47d06188e5c4bc869d5e7207a28d2b5417ed75
 </body>
 </html>

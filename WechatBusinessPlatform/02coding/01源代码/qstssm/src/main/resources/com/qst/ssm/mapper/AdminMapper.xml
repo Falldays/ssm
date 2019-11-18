@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.ssm.mapper.AdminMapper">
+    <!-- 查询所有管理员-->
+    <select id="queryAdmin" resultType="admin">
+        <![CDATA[
+        select
+            admin_id as adminId,
+            admin_no as adminNo,
+            admin_name as adminName,
+            admin_mobile as mobile,
+            admin_sex as sex
+        from
+            j_admin
+        ]]>
+    </select>
+    <!-- 根据管理员ID加载管理员信息-->
+    <select id="getAdmin"  resultType="admin" parameterType="int">
+        <![CDATA[
+        select
+            admin_id as adminId,
+            admin_no as adminNo,
+            admin_name as adminName,
+            admin_mobile as mobile,
+            admin_sex as sex
+        from
+            j_admin
+        where admin_id=#{admin_id}
+       ]]>
+    </select>
+    <!-- 添加管理员-->
+    <insert id="insertAdmin" parameterType="admin">
+      <![CDATA[
+        insert into j_admin (
+            admin_no,
+            admin_name,
+            admin_mobile,
+            admin_sex
+        )
+        values
+        (
+            #{adminNo},
+            #{adminName},
+            #{mobile},
+            #{sex}
+         )
+      ]]>
+    </insert>
+    <!-- 根据管理员ID删除管理员记录-->
+    <delete id="deleteAdmin" parameterType="int">
+        <![CDATA[
+        delete from j_admin where admin_id=#{admin_id}
+      ]]>
+    </delete>
+    <!-- 根据管理员ID修改管理员信息-->
+    <update id="updateAdmin" parameterType="admin">
+    <![CDATA[
+        update  j_admin
+        set     admin_no=#{adminNo},
+                admin_name=#{adminName},
+                admin_mobile=#{mobile},
+                admin_sex=#{sex}
+        where   admin_id=#{adminId}
+     ]]>
+    </update>
+</mapper>

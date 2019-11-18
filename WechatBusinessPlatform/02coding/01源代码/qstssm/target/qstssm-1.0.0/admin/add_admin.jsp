@@ -11,6 +11,7 @@
     <title>添加管理员</title>
 </head>
 <body>
+<<<<<<< HEAD
 <form action="/admin/add" method="post">
     <ul style="list-style: none">
         <li><h3>添加管理员</h3></li>
@@ -29,5 +30,8 @@
     </ul>
 
 </form>
+=======
+
+>>>>>>> bf47d06188e5c4bc869d5e7207a28d2b5417ed75
 </body>
 </html>

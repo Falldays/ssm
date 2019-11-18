@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.ssm.mapper.EmpMapper">
+    <!-- 查询所有用户-->
+    <select id="queryUser" resultType="user">
+        <![CDATA[
+        select
+            user_id as userId,
+            user_name as userName,
+            user_nc as userNc,
+            user_tel as tel,
+            user_sex as sex,
+            user_date as birthday
+        from
+            j_user
+        ]]>
+    </select>
+    <!-- 根据用户ID加载用户信息-->
+    <select id="getUser"  resultType="user" parameterType="int">
+        <![CDATA[
+        select
+            user_id as userId,
+            user_name as userName,
+            user_nc as userNc,
+            user_tel as tel,
+            user_sex as sex,
+            user_date as birthday
+        from
+            j_user
+        where user_id=#{user_id}
+       ]]>
+    </select>
+    <!-- 添加用户-->
+    <insert id="insertUser" parameterType="user">
+      <![CDATA[
+        insert into j_user (
+            user_name as userName,
+            user_nc as userNc,
+            user_tel as tel,
+            user_sex as sex,
+            user_date as birthday
+        )
+        values
+        (
+            #{userName},
+            #{userNc},
+            #{tel}
+            #{sex},
+            #{birthday}
+         )
+      ]]>
+    </insert>
+    <!-- 根据用户ID删除用户记录-->
+    <delete id="deleteUser" parameterType="int">
+        <![CDATA[
+        delete from j_user where user_id=#{user_id}
+      ]]>
+    </delete>
+    <!-- 根据用户ID修改用户信息-->
+    <update id="updateUser" parameterType="user">
+    <![CDATA[
+        update  j_user
+        set     user_name=#{userName},
+                user_nc=#{userNc},
+                user_tel=#{tel},
+                user_sex=#{sex},
+                user_date=#{birthday}
+        where user_id=#{userId}
+     ]]>
+    </update>
+</mapper>

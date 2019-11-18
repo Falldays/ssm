@@ -2,22 +2,14 @@
   Created by IntelliJ IDEA.
   User: kiss
   Date: 2019/11/18
-  Time: 19:20
+  Time: 20:06
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<<<<<<< HEAD
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-=======
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>修改结果页面</title>
+    <title>用户修改结果页面</title>
 </head>
 <body>
 <c:choose>
@@ -28,11 +20,10 @@
         <span style="color:rgb(255,0,0)">修改失败,服务器异常</span>
     </c:when>
     <c:otherwise>
-        <span style="color:rgb(219,99,48)">修改管理员,服务器返回未知的状态</span>
+        <span style="color:rgb(219,99,48)">修改用户,服务器返回未知的状态</span>
     </c:otherwise>
 </c:choose>
-<a href="/admin/query">返回查询页面</a>
+<a href="/user/query">返回查询页面</a>
 <a href="/index.html">返回主页面</a>
->>>>>>> bf47d06188e5c4bc869d5e7207a28d2b5417ed75
 </body>
 </html>
