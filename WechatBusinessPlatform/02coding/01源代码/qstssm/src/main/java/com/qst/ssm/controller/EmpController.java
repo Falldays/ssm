@@ -110,5 +110,4 @@ public class EmpController {
         return "redirect:/emp/update_emp_result.jsp?rows="+rows;
     }
 
-    ;
 }

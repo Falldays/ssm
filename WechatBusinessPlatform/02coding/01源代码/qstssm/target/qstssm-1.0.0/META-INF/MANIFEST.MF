@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+<<<<<<< HEAD
+Built-By: 29067
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_231
+=======
+Built-By: kiss
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8
+>>>>>>> a56ee9dbbafb729a9c21bd3bce0c6f53556a079a
+

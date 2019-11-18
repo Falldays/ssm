@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Order {
 
-    private int ordeId;             //订单表ID
+    private int orderId;             //订单表ID
     private String orderNo;             //订单号
     private int userId;              //用户ID
     private int pdPrice;             //订单价格
@@ -14,8 +14,8 @@ public class Order {
     public Order() {
     }
 
-    public Order(int ordeId, String orderNo, int userId, int pdPrice, String expressNo, Date createTime) {
-        this.ordeId = ordeId;
+    public Order(int orderId, String orderNo, int userId, int pdPrice, String expressNo, Date createTime) {
+        this.orderId = orderId;
         this.orderNo = orderNo;
         this.userId = userId;
         this.pdPrice = pdPrice;
@@ -23,12 +23,12 @@ public class Order {
         this.createTime = createTime;
     }
 
-    public int getOrdeId() {
-        return ordeId;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrdeId(int ordeId) {
-        this.ordeId = ordeId;
+    public void setOrderId(int ordeId) {
+        this.orderId = ordeId;
     }
 
     public String getOrderNo() {
@@ -74,7 +74,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "ordeId=" + ordeId +
+                "ordeId=" + orderId +
                 ", orderNo='" + orderNo + '\'' +
                 ", userId=" + userId +
                 ", pdPrice=" + pdPrice +

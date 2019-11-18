@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.ssm.mapper.OrderMapper">
+    <!--查询所有订单 -->
+    <select id="queryOrder" resultType="order">
+    <![CDATA[
+    select
+         order_id  as  orderId,
+         order_no  as  orderNo,
+         user_id   as  userId,
+         pd_price  as  pdPrice,
+         express_no   as  expressNo,
+         create_time  as  createTime
+    from
+        j_order
+    ]]>
+    </select>
+
+    <!-- 删除订单-->
+    <delete id="deleteOrder" parameterType="int">
+        <![CDATA[
+          delete from j_order where order_id=#{order_id}
+        ]]>
+    </delete>
+
+    <!-- 根据员工ID修改员工信息-->
+    <update id="updateOrder" parameterType="order">
+    <![CDATA[
+        update  j_order
+        set     order_no=#{orderNo},
+         user_id=#{userId},
+         pd_price=#{pdPrice},
+         express_no=#{expressNo},
+         create_time=#{createTime}
+        where order_id=#{orderId}
+     ]]>
+    </update>
+</mapper>

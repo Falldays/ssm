@@ -24,6 +24,6 @@
     </c:otherwise>
 </c:choose>
 <a href="/emp/query">返回查询页面</a>
-<a href="/index.html">返回主页面</a>
+<a href="/index.jsp">返回主页面</a>
 </body>
 </html>
