@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository()
+@Repository("adminDao")
 public class AdminDaoImpl implements IAdminDao {
     @Autowired
     @Qualifier("adminMapper")

@@ -32,7 +32,7 @@ public class AdminServiceImpl implements IAdminService{
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public int insertEmp(Admin admin) {
+    public int insertAdmin(Admin admin) {
         return adminDao.insertAdmin(admin);
     }
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.ssm.mapper.ServiceLogMonitorMapper">
+    <!-- 查询数据库表是否存在-->
+    <select id="getTableStatus" resultType="int">
+    <![CDATA[
+        select count(*) from information_schema.tables t where t.table_schema =#{databaseName} and t.table_name =#{tableName}
+     ]]>
+    </select>
+   <!-- 添加Service方法调用日志-->
+    <insert id="insertCallLog">
+        <![CDATA[
+          insert into t_service_call_log(method_name, class_name,call_time,args_data)values(#{method_name},#{class_name},NOW(),#{args_data})
+         ]]>
+    </insert>
+    <!--添加Service方法异常日志 -->
+    <insert id="insertErrorLog">
+        <![CDATA[
+          insert into t_exception_log (method_name,class_name,call_time,args_data,exp_class_type,message) values(#{method_name},#{class_name},NOW(),#{args_data},#{exp_class_type},#{message})
+        ]]>
+    </insert>
+    <!--创建异常日志表 -->
+    <update id="createExceptionLogTable">
+        <![CDATA[
+        create table t_exception_log
+        (
+            exp_log_id     bigint primary key Auto_increment comment '异常日志ID',
+            method_name    varchar(100) comment '业务方法名',
+            class_name     varchar(500) comment '业务类名',
+            call_time      timestamp comment '调用时间',
+            args_data      varchar(4000) comment '参数JSON数据',
+            exp_class_type varchar(200) comment '异常class类型',
+            message        varchar(4000) comment '异常日志消息'
+        ) comment '异常日志表'
+       ]]>
+    </update>
+    <!-- 创建业务方法调用日志表-->
+    <update id="createServiceCallLogTable">
+        <![CDATA[
+        create table t_service_call_log
+        (
+            call_log_id bigint primary key Auto_increment comment '方法调用日志ID',
+            method_name varchar(100) comment '方法名',
+            class_name  varchar(500) comment '类名',
+            call_time   timestamp comment '调用时间',
+            args_data   varchar(4000) comment '参数JSlON数据'
+        ) comment '业务方法调用日志表'
+       ]]>
+    </update>
+</mapper>    

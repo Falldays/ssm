@@ -27,7 +27,7 @@ public interface IAdminService {
      * @param admin
      * @return
      */
-    int insertEmp(Admin admin);
+    int insertAdmin(Admin admin);
 
     /**
      * 根据管理员ID删除管理员记录
