@@ -24,7 +24,7 @@ public class UserController {
     private IUserService userService;
 
     /***
-     * 查询所有员工
+     * 查询所有用户
      * @return
      */
     @RequestMapping("query")
@@ -36,7 +36,7 @@ public class UserController {
     }
 
     /**
-     * 根据管理员ID删除管理员
+     * 根据用户ID删除用户
      *
      * @param userId
      * @return
@@ -61,7 +61,7 @@ public class UserController {
     }
 
     /**
-     * 添加管理员
+     * 添加用户
      *
      * @param user
      * @return
@@ -73,7 +73,7 @@ public class UserController {
     }
 
     /**
-     * 加载管理员数据
+     * 加载用户数据
      * http://localhost:8080/user/load_one?user_id=4
      *
      * @param userId
@@ -90,7 +90,7 @@ public class UserController {
     }
 
     /**
-     * 修改管理员
+     * 修改用户
      *
      * @param user
      * @return

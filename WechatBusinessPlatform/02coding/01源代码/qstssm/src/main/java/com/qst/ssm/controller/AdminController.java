@@ -27,7 +27,7 @@ public class AdminController {
     private IAdminService adminService;
 
     /***
-     * 查询所有员工
+     * 查询所有管理员
      * @return
      */
     @RequestMapping("query")
@@ -58,8 +58,8 @@ public class AdminController {
      */
     @RequestMapping("info")
     public String showInfo(@RequestParam("admin_id") int adminId, Model model) {
-        Admin emp = adminService.getAdmin(adminId);
-        model.addAttribute("emp", emp);
+        Admin admin = adminService.getAdmin(adminId);
+        model.addAttribute("admin", admin);
         return "/admin/info.jsp";
     }
 
@@ -77,7 +77,7 @@ public class AdminController {
 
     /**
      * 加载管理员数据
-     * http://localhost:8080/emp/load_one?emp_id=4
+     * http://localhost:8080/admin/load_one?admin_id=4
      *
      * @param adminId
      * @return
