@@ -2,6 +2,10 @@ package com.qst.ssm.entity;
 
 import java.util.Date;
 
+/**
+ * 购物车实体类
+ * user:fanlimin
+ */
 public class Shop {
     private Integer shopId;          //购物车ID
     private Integer userId;              //用户ID

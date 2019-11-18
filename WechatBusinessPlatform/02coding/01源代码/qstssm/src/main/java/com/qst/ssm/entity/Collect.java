@@ -2,6 +2,10 @@ package com.qst.ssm.entity;
 
 import java.util.Date;
 
+/**
+ * 收藏夹实体类
+ * user:fanlimin
+ */
 public class Collect {
 
     private int collId;              //收藏表ID
