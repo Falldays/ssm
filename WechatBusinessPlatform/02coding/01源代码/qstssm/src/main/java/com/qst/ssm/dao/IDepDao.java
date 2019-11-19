@@ -10,7 +10,7 @@ import java.util.List;
 public interface IDepDao {
     /**
      * 查询所有部门
-     *
+     *hh
      * @return
      */
     List<Dep> queryDep();

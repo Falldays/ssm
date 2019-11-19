@@ -17,10 +17,10 @@ http://www.springframework.org/schema/aop  http://www.springframework.org/schema
             <value>root</value>
         </property>
         <property name="password">
-            <value></value>
+            <value>root</value>
         </property>
         <property name="url">
-            <value>jdbc:mysql://localhost:3306/qst?useUnicode=true&amp;characterEncoding=utf8</value>
+            <value>jdbc:mysql://localhost:3306/shujuku?useUnicode=true&amp;characterEncoding=utf8</value>
         </property>
         <!-- 初始化连接数量-->
         <property name="initialSize">
