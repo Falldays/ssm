@@ -6,14 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<<<<<<< HEAD
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
 
-=======
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -32,7 +25,6 @@
     </c:otherwise>
 </c:choose>
 <a href="/admin/query">返回查询页面</a>
-<a href="/index.html">返回主页面</a>
->>>>>>> bf47d06188e5c4bc869d5e7207a28d2b5417ed75
+<a href="/index.jsp">返回主页面</a>
 </body>
 </html>

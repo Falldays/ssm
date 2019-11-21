@@ -11,7 +11,6 @@
     <title>添加管理员</title>
 </head>
 <body>
-<<<<<<< HEAD
 <form action="/admin/add" method="post">
     <ul style="list-style: none">
         <li><h3>添加管理员</h3></li>
@@ -21,7 +20,7 @@
             <label><input type="radio" name="sex" value="1" required>男</label>
             <label><input type="radio" name="sex" value="2" required>女</label>
         </li>
-        <li>手机号码:<input type="tel" name="mobile" required></li>
+        <li>手机号码:<input type="text" name="mobile" required></li>
 
         <li>
                 <input type="submit" value="添加管理员">&nbsp;&nbsp;
@@ -30,8 +29,5 @@
     </ul>
 
 </form>
-=======
-
->>>>>>> bf47d06188e5c4bc869d5e7207a28d2b5417ed75
 </body>
 </html>

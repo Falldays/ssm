@@ -21,11 +21,7 @@
             <th>管理员姓名</th>
             <th>手机号码</th>
             <th>性别</th>
-<<<<<<< HEAD
-            <th>操作1</th>
-=======
             <th>操作</th>
->>>>>>> bf47d06188e5c4bc869d5e7207a28d2b5417ed75
         </tr>
         <c:choose>
             <c:when test="${ empty requestScope.adminList}">

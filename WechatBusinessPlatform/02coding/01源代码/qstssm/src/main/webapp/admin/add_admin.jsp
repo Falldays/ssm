@@ -20,7 +20,7 @@
             <label><input type="radio" name="sex" value="1" required>男</label>
             <label><input type="radio" name="sex" value="2" required>女</label>
         </li>
-        <li>手机号码:<input type="tel" name="mobile" required></li>
+        <li>手机号码:<input type="text" name="mobile" required></li>
 
         <li>
                 <input type="submit" value="添加管理员">&nbsp;&nbsp;

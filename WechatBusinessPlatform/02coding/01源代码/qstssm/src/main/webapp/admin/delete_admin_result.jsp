@@ -26,6 +26,6 @@
         <span style="color:rgb(193,193,193)">服务器返回未知状态</span>
     </c:otherwise>
 </c:choose>
-<a href="/emp/query">返回查询页面</a>
+<a href="/admin/query">返回查询页面</a>
 </body>
 </html>
