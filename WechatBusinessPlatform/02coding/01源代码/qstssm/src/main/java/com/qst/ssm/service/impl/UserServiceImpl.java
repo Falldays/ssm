@@ -46,4 +46,10 @@ public class UserServiceImpl implements IUserService {
     public int updateUser(User user) {
         return 0;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public int updatepassword(int userId) {
+        return 0;
+    }
 }

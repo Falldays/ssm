@@ -42,4 +42,10 @@ public interface IUserService {
      * @return
      */
     int updateUser(User user);
+
+    /**修改用户密码
+     * @param userId
+     * @return
+     */
+    int updatepassword(int userId);
 }

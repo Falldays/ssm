@@ -5,6 +5,7 @@ import com.qst.ssm.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,9 +19,11 @@ import java.util.Map;
 /**
  * 处理用户业务控制器
  */
+@Controller
+@RequestMapping("user")
 public class UserController {
     @Autowired
-    @Qualifier("adminService")
+    @Qualifier("userService")
     private IUserService userService;
 
     /***
@@ -30,7 +33,7 @@ public class UserController {
     @RequestMapping("query")
     public String queryUser(HttpServletRequest request, Model model) {
         List<User> userList = userService.queryUser();
-        //request.setAttribute("adminList",adminList);
+        //request.setAttribute("userList",userList);
         model.addAttribute("userList", userList);
         return "/user/query_user.jsp";
     }
@@ -42,7 +45,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("delete")
-    public String deleteUser(@RequestParam("admin_id") int userId) {
+    public String deleteUser(@RequestParam("user_id") int userId) {
         int rows = userService.deleteUser(userId);
         //重定向到删除结果的页面
         return "redirect:/user/delete_user_result.jsp?rows=" + rows;
@@ -100,4 +103,5 @@ public class UserController {
         int rows =userService.updateUser(user);
         return "redirect:/user/update_user_result.jsp?rows="+rows;
     }
+
 }

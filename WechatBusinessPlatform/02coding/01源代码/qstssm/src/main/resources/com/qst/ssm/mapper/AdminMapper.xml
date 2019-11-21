@@ -36,6 +36,7 @@
         insert into j_admin (
             admin_no,
             admin_name,
+            admin_pass,
             admin_mobile,
             admin_sex
         )
@@ -43,6 +44,7 @@
         (
             #{adminNo},
             #{adminName},
+            #{password}
             #{mobile},
             #{sex}
          )

@@ -47,4 +47,10 @@ public class AdminServiceImpl implements IAdminService{
     public int updateAdmin(Admin admin) {
         return adminDao.updateAdmin(admin);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public int updatepass(int adminId) {
+        return 0;
+    }
 }

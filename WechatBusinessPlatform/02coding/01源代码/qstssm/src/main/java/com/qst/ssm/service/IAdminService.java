@@ -42,4 +42,10 @@ public interface IAdminService {
      * @return
      */
     int updateAdmin(Admin admin);
+
+    /**修改管理员密码
+     * @param adminId
+     * @return
+     */
+    int updatepass(int adminId);
 }
